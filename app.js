@@ -7,6 +7,7 @@ const resetBtn = document.querySelector(".btn--reset");
 const autoCountBtn = document.querySelector(".btn--auto");
 const lowerLimitInput = document.querySelector("#lower-limit");
 const upperLimitInput = document.querySelector("#upper-limit");
+const inputFields = document.querySelectorAll("input");
 const counterTxt = document.querySelector(".counter");
 
 // Initiate global variables;
@@ -44,4 +45,14 @@ minusBtn.addEventListener("click", (e) => {
 resetBtn.addEventListener("click", () => {
   counter = 0;
   counterTxt.textContent = counter;
+})
+
+// Restrict to only numbers in input fields
+
+Array.from(inputFields).forEach((input) => {
+  input.addEventListener("keyup", (e) => {
+    input.value = input.value.replace(/[^0-9]/g, '');
+    counter = lowerLimitInput.value;
+    counterTxt.textContent = counter;
+  })
 })
