@@ -38,3 +38,10 @@ minusBtn.addEventListener("click", (e) => {
   }
 })
 
+
+// Reset the counter on reset button click
+
+resetBtn.addEventListener("click", () => {
+  counter = 0;
+  counterTxt.textContent = counter;
+})
