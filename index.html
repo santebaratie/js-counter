@@ -8,16 +8,16 @@
   <title>JS Counter</title>
 </head>
 <body>
-<header>
-</header>
 <main>
   <div class="board">
-    <div class="board__head">
-      <h1>JS Counter</h1>
-      <label for="lower-limit">Lower limit</label>
-      <input type="number" name="" id="lower-limit">
-      <label for="upper-limit">Upper limit</label>
-      <input type="number" name="" id="upper-limit">
+    <div class="board__head">   
+      <h1 class="counter">0</h1>
+      <div class="limits">
+        <label for="lower-limit">Lower limit</label>
+        <input type="number" name="" id="lower-limit" >
+        <label for="upper-limit">Upper limit</label>
+        <input type="number" name="" id="upper-limit">
+      </div>
       <button class="btn btn--reset">Reset counter</button>
       <button class="btn btn--auto">Auto count <i class="fa-solid fa-question"></i></button>
     </div>
