@@ -43,6 +43,9 @@ minusBtn.addEventListener("click", (e) => {
 // Reset the counter on reset button click
 
 resetBtn.addEventListener("click", () => {
+  if(intervalID){
+    clearInterval(intervalID);
+  }
   counter = 0;
   counterTxt.textContent = counter;
 })
@@ -56,3 +59,16 @@ Array.from(inputFields).forEach((input) => {
     counterTxt.textContent = counter;
   })
 })
+
+// Increment counter when auto count clicked;
+
+let intervalID;
+autoCountBtn.addEventListener("click", () => {
+ intervalID = setInterval(() => {
+    counter++;
+    counterTxt.textContent = counter;
+  }, 1000)
+  autoCountBtn.addEventListener("dblclick", () => {
+    clearInterval(intervalID);
+  })
+}, {once: true})
