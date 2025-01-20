@@ -13,3 +13,13 @@ button,
 textarea {
   font-family: inherit;
 }
+
+:root {
+  --bg-color: #0d1117;
+  --fg-color: #21262d;
+  --border-color: #484f58;
+  --text-color: #f0f6fc;
+  --primary-color: #238636;
+  --link-color: #1f6feb;
+  --danger-color: #da3633;
+}
