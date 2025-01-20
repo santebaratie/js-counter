@@ -7,7 +7,7 @@ const resetBtn = document.querySelector(".btn--reset");
 const autoCountBtn = document.querySelector(".btn--auto");
 const lowerLimitInput = document.querySelector("#lower-limit");
 const upperLimitInput = document.querySelector("#upper-limit");
-
+const counterTxt = document.querySelector(".counter");
 
 // Initiate global variables;
 
@@ -17,7 +17,24 @@ let counter = 0;
 
 window.addEventListener("DOMContentLoaded", (e) => {
   lowerLimitInput.value = 0;
-  upperLimitInput.value = 100;
+  upperLimitInput.value = 10;
 })
 
+// Increment the counter when plus button clicked
+
+plusBtn.addEventListener("click", (e) => {
+  if(counter < upperLimitInput.value){
+    counter++;
+    counterTxt.textContent = counter;
+  }
+})
+
+// Decrement the counter when minus button clicked
+
+minusBtn.addEventListener("click", (e) => {
+  if(counter > lowerLimitInput.value){
+    counter--;
+    counterTxt.textContent = counter;
+  }
+})
 
