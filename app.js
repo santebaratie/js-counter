@@ -64,11 +64,17 @@ Array.from(inputFields).forEach((input) => {
 
 let intervalID;
 autoCountBtn.addEventListener("click", () => {
- intervalID = setInterval(() => {
-    counter++;
-    counterTxt.textContent = counter;
+  let upperLimit = upperLimitInput.value;
+  intervalID = setInterval(() => {
+    if(counter < upperLimit){
+      counter++;
+      counterTxt.textContent = counter;
+    }else{
+      clearInterval(intervalID);
+    }
   }, 1000)
-  autoCountBtn.addEventListener("dblclick", () => {
-    clearInterval(intervalID);
-  })
+
+autoCountBtn.addEventListener("dblclick", () => {
+  clearInterval(intervalID);
+})
 }, {once: true})
