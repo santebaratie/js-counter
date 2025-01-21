@@ -19,62 +19,66 @@ let counter = 0;
 window.addEventListener("DOMContentLoaded", (e) => {
   lowerLimitInput.value = 0;
   upperLimitInput.value = 10;
-})
+});
 
 // Increment the counter when plus button clicked
 
 plusBtn.addEventListener("click", (e) => {
-  if(counter < upperLimitInput.value){
+  if (counter < upperLimitInput.value) {
     counter++;
     counterTxt.textContent = counter;
   }
-})
+});
 
 // Decrement the counter when minus button clicked
 
 minusBtn.addEventListener("click", (e) => {
-  if(counter > lowerLimitInput.value){
+  if (counter > lowerLimitInput.value) {
     counter--;
     counterTxt.textContent = counter;
   }
-})
-
+});
 
 // Reset the counter on reset button click
 
 resetBtn.addEventListener("click", () => {
-  if(intervalID){
+  if (intervalID) {
     clearInterval(intervalID);
   }
   counter = 0;
   counterTxt.textContent = counter;
-})
+  autoCountBtn.addEventListener("click", handleAutoCountBtnClick, {once: true})
+});
 
 // Restrict to only numbers in input fields
 
 Array.from(inputFields).forEach((input) => {
   input.addEventListener("keyup", (e) => {
-    input.value = input.value.replace(/[^0-9]/g, '');
+    input.value = input.value.replace(/[^0-9]/g, "");
     counter = lowerLimitInput.value;
     counterTxt.textContent = counter;
-  })
-})
+  });
+});
 
 // Increment counter when auto count clicked;
 
 let intervalID;
-autoCountBtn.addEventListener("click", () => {
+
+function handleAutoCountBtnClick() {
   let upperLimit = upperLimitInput.value;
   intervalID = setInterval(() => {
-    if(counter < upperLimit){
+    if (counter < upperLimit) {
       counter++;
       counterTxt.textContent = counter;
-    }else{
+    } else {
       clearInterval(intervalID);
     }
-  }, 1000)
+  }, 1000);
 
-autoCountBtn.addEventListener("dblclick", () => {
-  clearInterval(intervalID);
-})
-}, {once: true})
+  autoCountBtn.addEventListener("dblclick", () => {
+    clearInterval(intervalID);
+    autoCountBtn.addEventListener("click", handleAutoCountBtnClick, { once: true });
+  });
+}
+
+autoCountBtn.addEventListener("click", handleAutoCountBtnClick, { once: true });
